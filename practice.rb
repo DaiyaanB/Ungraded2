@@ -28,15 +28,26 @@ blockchain = [
 
 # 👇👇👇 Your code HERE 👇👇👇
 
-wallet = {"account" => "", "cash" => 0}
+wallet = []
 
 for user in blockchain
  if user["from_user"] != nil
-  # Assuming you want to store some value for each user, for example, a default value
-  wallet[user["from_user"]] = some_default_value
+  wallet.push({"account" => user["from_user"], "cash" => 0})
  end
 end
 
-
 puts wallet
 
+for transaction in blockchain
+  for account in wallet
+    if account["account"] == transaction["to_user"]
+      account["cash"] += transaction["amount"]
+    end
+    if account["account"] == transaction["from_user"]
+      account["cash"] -= transaction["amount"]
+    end
+  end
+end
+
+puts ""
+puts wallet
