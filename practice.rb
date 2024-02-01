@@ -27,3 +27,16 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+wallet = {"account" => "", "cash" => 0}
+
+for user in blockchain
+ if user["from_user"] != nil
+  # Assuming you want to store some value for each user, for example, a default value
+  wallet[user["from_user"]] = some_default_value
+ end
+end
+
+
+puts wallet
+
